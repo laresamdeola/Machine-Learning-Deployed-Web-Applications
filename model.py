@@ -4,7 +4,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 
 
-def salary_model(years_of_experience):
+def salary_model(years):
     dataset = pd.read_csv('Salary_Data.csv')
     X = dataset.iloc[:, :-1].values
     y = dataset.iloc[:, -1].values
@@ -13,6 +13,6 @@ def salary_model(years_of_experience):
 
     regressor = LinearRegression()
     regressor.fit(X_train, y_train)
-
-    y_pred = regressor.predict([[years_of_experience]])
-    return y_pred[0]
+  
+    y_pred = regressor.predict([[years]])
+    return (f"${round(y_pred[0])} per year")
